@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Paquetes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="text-light">
+    <header class="text-light">
+        <nav class="navbar navbar-expand-lg bg-primary text-light">
+            <div class="container-fluid text-light">
+              <a class="navbar-brand text-light" href="#">SexMex</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link text-light" aria-current="page" href="/">Rastrear Paquete</a>
+                  </li>
+                  {% if login %}
+                    <li class="nav-item">
+                      <p class="pt-2 ps-2">{{login[0]}}</p>
+                    </li>
+                    <li class="nav-item ps-2">
+                      <a class="nav-link active text-light" href="/Registrar/Paquetes">Registrar Paquete</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active text-light" href="/Historial_Estados">Historial de estados</a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    {% if accion == True %}
+      <div class="alert alert-primary mt-5 mx-auto text-center" role="alert" style="width: 50rem;">
+        Se ha registrado correctamente 
+      </div>
+    {% endif %}
+    {% if accion == False %}
+      <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+      </svg>
+
+      <div class="alert alert-danger d-flex align-items-center mt-5 mx-auto" role="alert" style="width: 50rem; height: 3rem;">
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 2rem; width: 3rem;"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        <div class="text-center">
+          El correo ya esta registrado
+        </div>
+      </div>
+    {% endif %}
+
+    <form style="width: 50rem;" class="mx-auto mt-5 bg-primary p-5 text-light rounded-3" method="post" action="/Registrar/Paquetes/ED174R">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre Del Remitente</label>
+            <input type="text" class="form-control" name="n_r" value="{{edit[1]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nombre Del Destinatario</label>
+          <input type="text" class="form-control" name="n_d" value="{{edit[2]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Direccion Del Remitente</label>
+          <input type="text" class="form-control" name="d_r" value="{{edit[3]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Direccion Del Destinatario</label>
+          <input type="text" class="form-control" name="d_d" value="{{edit[4]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Codigo Postal Del Remitente</label>
+          <input type="number" class="form-control" name="c_r" value="{{edit[5]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Codigo Postal Del Destinatario</label>
+          <input type="number" class="form-control" name="c_d" value="{{edit[6]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Estado Del Remitente</label>
+          <input type="text" class="form-control" name="e_r" value="{{edit[7]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Estado Del Destinatario</label>
+          <input type="text" class="form-control" name="e_d" value="{{edit[8]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Ciudad Del Remitente</label>
+          <input type="text" class="form-control" name="ciudad_r" value="{{edit[9]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Ciudad Del Destinatario</label>
+          <input type="text" class="form-control" name="ciudad_d" value="{{edit[10]}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Descripcion</label>
+          <input type="text" class="form-control" name="descripcion" value="{{edit[11]}}">
+        </div>
+        <button type="submit" class="btn btn-light">Editar</button>
+    </form>
+
+    <table class="table table-bordered table-striped mt-4">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Nombre Del Remitente</th>
+              <th>Nombre Del Destinatario</th>
+              <th>Direccion Del Remitente</th>
+              <th>Direccion Del Destinatario</th>
+              <th>Codigo Postal Del Remitente</th>
+              <th>Codigo Postal Del Destinatario</th>
+              <th>Estado Del Remitente</th>
+              <th>Estado Del Destinatario</th>
+              <th>Ciudad Del Remitente</th>
+              <th>Ciudad Del Destinatario</th>
+              <th>Descripcion</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for data in datos %}
+          <tr>
+              <td>{{ data[0] }}</td>
+              <td>{{ data[1] }}</td>
+              <td>{{ data[2] }}</td>
+              <td>{{ data[3] }}</td>
+              <td>{{ data[4] }}</td>
+              <td>{{ data[5] }}</td>
+              <td>{{ data[6] }}</td>
+              <td>{{ data[7] }}</td>
+              <td>{{ data[8] }}</td>
+              <td>{{ data[9] }}</td>
+              <td>{{ data[10] }}</td>
+              <td>{{ data[11] }}</td>
+              <td>
+                  <a href="/Registrar/Paquetes/{{ data[0] }}" class="btn btn-warning btn-sm">Editar</a>
+                  <form method="POST" action="/Registrar/Paquetes/3L1M1N4R/{{ data[0] }}" style="display:inline;">
+                      <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                  </form>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

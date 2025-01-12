@@ -1,0 +1,54 @@
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+header {
+    background: #35495e;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+main {
+    padding: 1rem;
+}
+section {
+    margin-bottom: 2rem;
+}
+form {
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+form label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+form input, form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+form button {
+    background: #35495e;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+form button:hover {
+    background: #1f2937;
+}
+#search-results {
+    margin-top: 1rem;
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
